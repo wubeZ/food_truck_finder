@@ -29,7 +29,7 @@ jobs:
 
       - name: Run tests
         env:
-          MONGO_URI: ${{ secrets.MONGO_URL }}
+          MONGO_URL: ${{ secrets.MONGO_URL }}
           DB_COLLECTION_NAME: ${{ secrets.DB_COLLECTION_NAME }}      
         run: |
           cd food_truck_finder
