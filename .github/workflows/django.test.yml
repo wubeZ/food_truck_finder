@@ -27,12 +27,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Load environment variables
-        run: |
-          set -a
-          . .env
-          set +a
-
       - name: Run tests
         env:
           MONGO_URI: ${{ secrets.MONGO_URL }}
