@@ -1,6 +1,11 @@
 from django.urls import path
-from .views import my_view
+from . import views
+
+app_name = 'food_trucks'
 
 urlpatterns = [
-    path("",my_view, name = "my_view")
+    path("", views.index , name = "index"),
+    path("search",views.search, name = "search"),
+    path("searchByLoc", views.search_by_location, name = "search_by_location"),
+    path("details/<str:id>", views.details, name = "details")  
 ]
