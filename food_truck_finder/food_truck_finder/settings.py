@@ -1,9 +1,6 @@
 import os
 from pathlib import Path
 from utils.database import get_database
-from dotenv import load_dotenv
-
-load_dotenv()
 
 get_database()
 
@@ -69,14 +66,14 @@ WSGI_APPLICATION = 'food_truck_finder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mongo',
-        'NAME': "test",
-        'HOST': os.getenv("MONGO_URL"),
-        'PORT': 27017,
-    }
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': "your_database",
+#         'HOST': "localhost",
+#         'PORT': 27017,
+#     }
+# }
 
 
 
