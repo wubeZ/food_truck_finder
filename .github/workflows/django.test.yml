@@ -1,0 +1,51 @@
+name: Django Test (CI/CD)
+
+on:
+  push:
+    branches:
+      - main  # Adjust branch name as needed
+  
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      mongodb:
+        image: mongo:latest
+        ports:
+          - 27017:27017
+        options: |
+          --health-cmd "mongo --eval 'db.runCommand({ connectionStatus: 1 })'"
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python with 3.11
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.11
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Load environment variables
+        run: |
+          set -a
+          . .env
+          set +a
+
+      - name: Run tests
+        env:
+          MONGO_URI: ${{ secrets.MONGO_URL }}
+          DB_COLLECTION_NAME: ${{ secrets.DB_COLLECTION_NAME }}      
+        run: |
+          cd food_truck_finder
+          python manage.py test
+
