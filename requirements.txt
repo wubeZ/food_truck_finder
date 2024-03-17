@@ -1,6 +1,8 @@
 asgiref==3.7.2
 dataclasses==0.6
 Django==5.0.3
+django-mongodb-engine==0.6.0
+djangotoolbox==1.8.0
 dnspython==2.6.1
 mongoengine==0.28.2
 pymongo==4.6.2
