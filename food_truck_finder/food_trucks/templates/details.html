@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<section class="flex flex-col md:flex-row justify-between p-4">
+    <div class="max-w-md mb-4 md:mb-0 md:mr-4">
+        {% if food_truck %}
+            <h1 class="text-2xl font-bold mb-2">{{ food_truck.name }}</h1>
+            <p class="text-lg text-gray-600 mb-2">{{ food_truck.facility_type }}</p>
+            <p class="text-sm text-gray-600 mb-2">{{ food_truck.location_description }}</p>
+            <p class="text-sm text-gray-600 mb-2">{{ food_truck.address }}</p>
+            <p class="text-sm text-gray-600 mb-2">{{ food_truck.permit }}</p>
+            <p class="text-sm text-gray-600 mb-4">{{ food_truck.status }}</p>
+            
+            {% if food_truck.food_items %}
+                <h2 class="text-lg font-semibold mb-2">Food Items</h2>
+                <ul class="list-disc ml-4">
+                    {% for food_item in food_truck.food_items %}
+                        <li class="text-sm text-gray-600 mb-1">{{ food_item }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+      
+            {% if food_truck.open_hours %}
+                <h2 class="text-lg font-semibold mt-4 mb-2">Open Hours</h2>
+                {% for day, hours in food_truck.open_hours.items %}
+                    <p class="text-sm text-gray-600 mb-1">{{ day }}</p>
+                    <ul class="list-disc ml-4">
+                        {% for hour in hours %}
+                            <li class="text-sm text-gray-600">{{ hour.start_time }} - {{ hour.end_time }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div id="map" class="w-full md:w-[600px] h-[300px] md:h-[400px]"></div>       
+    </div>
+
+    <!-- Pass data to JavaScript -->
+    <div id="food-truck-data"
+        data-name="{{ food_truck.name }}"
+        data-loc-description="{{ food_truck.facility_type }}"
+        data-lat="{{ food_truck.location.coordinates.1 }}"
+        data-lng="{{ food_truck.location.coordinates.0 }}">
+    </div>
+
+    {% else %}
+    <h1>Food Truck Not Found</h1>
+    {% endif %}
+</section>
+
+{% endblock %}

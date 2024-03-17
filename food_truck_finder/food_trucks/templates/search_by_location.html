@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section>
+    <div class="container">
+        <div class="w-full mb-12">
+            <h2 class="text-3xl">Results</h2>
+            <div class="flex flex-wrap gap-16 justify-center">
+                {% for food_truck in food_trucks %}
+                <a href="{% url 'food_trucks:details' food_truck.id|stringformat:'s' %}">
+                    <div class="p-2 w-80 h-64 hover:shadow-lg hover:scale-105 bg-slate-50 rounded-sm text-center">
+                        <img src="{{ food_truck.image.url }}" alt="{{ food_truck.name }}" class="w-full h-32 object-cover rounded-lg">
+                            <p class="text-2xl text-slate-700">
+                                {{ food_truck.name }}
+                            </p>
+                            <p class="text-sm">
+                                {{ food_truck.facility_type }}
+                            </p>
+    
+                    </div>
+                </a>     
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
