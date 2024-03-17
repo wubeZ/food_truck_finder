@@ -33,5 +33,5 @@ jobs:
           DB_COLLECTION_NAME: ${{ secrets.DB_COLLECTION_NAME }}      
         run: |
           cd food_truck_finder
-          python manage.py test
+          pytest
 
