@@ -10,3 +10,6 @@ class FoodTruck(Document):
     food_items = ListField(StringField())
     location = PointField(auto_index=False, required=True)
     open_hours = DictField()
+
+    def __str__(self):
+        return self.name
