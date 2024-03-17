@@ -1,6 +1,9 @@
 import os
 from pathlib import Path
 from utils.database import get_database
+from dotenv import load_dotenv
+
+load_dotenv()
 
 get_database()
 
@@ -68,10 +71,13 @@ WSGI_APPLICATION = 'food_truck_finder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mongo',
+        'NAME': "test",
+        'HOST': os.getenv("MONGO_URL"),
+        'PORT': 27017,
     }
 }
+
 
 
 # Password validation
