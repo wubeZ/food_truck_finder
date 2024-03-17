@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from food_trucks.models import FoodTruck
+from bson import ObjectId
 
 def nearest_trucks(lat, lng):
     # Convert latitude and longitude to float
@@ -18,11 +19,15 @@ def nearest_trucks(lat, lng):
             }
         },
         {
+            "$match" : {"status": "APPROVED"}
+        },
+        {
             "$sort": {"distance_miles": 1}  # Sort by distance in ascending order
         },
         {
             "$project": {
                 "_id": 0,
+                "id": "$_id",
                 "name": 1,
                 "facility_type": 1,
                 "location_description": 1,
@@ -30,8 +35,7 @@ def nearest_trucks(lat, lng):
                 "permit": 1,
                 "status": 1,
                 "food_items": 1,
-                "latitude": 1,
-                "longitude": 1,
+                "location": 1,
                 "open_hours": 1,
                 "distance_miles": 1
             }
@@ -46,9 +50,41 @@ def nearest_trucks(lat, lng):
     return nearest_trucks
 
 
-def my_view(request):
+def index(request):
     context = {
         'variable': 'value',
     }
+    return render(request, 'home.html', context)
+
+
+def search(request):
+    context = {
+        "variable": "value"
+    }
+    return render(request, "search.html", context)
+
+def search_by_location(request):
+    context = {}
+    if request.method == 'GET':
+        # Process the received coordinates
+        lat = request.GET.get('latitude')
+        lng = request.GET.get('longitude')
+
+        food_trucks = nearest_trucks(lat, lng)
+
+        context = {
+            "food_trucks" : food_trucks
+        }
+
+    return render(request, "search_by_location.html", context)
+
+def details(request, id):
+    object_id = ObjectId(id)
     
-    return render(request, 'base.html', context)
+    food_truck = FoodTruck.objects.get(id=object_id)
+    
+    context = {
+        "food_truck" : food_truck
+    }
+    return render(request, "details.html", context)
+
