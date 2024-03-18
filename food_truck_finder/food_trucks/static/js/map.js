@@ -14,15 +14,26 @@ document.addEventListener('DOMContentLoaded', function () {
     // Check if the map container exists
     if (mapContainer) {
         // Initialize the map
-        var map = L.map('map');
+        var map = L.map('map',{
+            minZoom: 2,
+            maxBounds: L.latLngBounds([-90, -180], [90, 180]), // Set the map's max bounds
+            maxBoundsViscosity: 1.0, // Set the max bounds viscosity
+         });
 
         // Create an array to hold marker coordinates
         var markerCoordinates = [
             [latitude, longitude] // Food truck marker coordinates
         ];
 
+        var truckIcon = L.icon({
+            iconUrl: "https://raw.githubusercontent.com/wubeZ/food_truck_finder/main/food_truck_finder/food_trucks/static/images/taco-truck.png?token=GHSAT0AAAAAACASNZN5KYSBPSHU7LYEZ472ZPYTMAA",
+            iconSize: [30, 35], // size of the icon
+            popupAnchor: [-3, -14] // point from which the popup should open relative to the iconAnchor
+        });
+
+
         // Add the food truck marker to the map
-        var foodTruckMarker = L.marker([latitude, longitude]).addTo(map).bindPopup(`<b>${ foodTruckName }</b><br>${ foodTruck_location_description }`).openPopup();
+        var foodTruckMarker = L.marker([latitude, longitude], {icon: truckIcon}).addTo(map).bindPopup(`<b>${ foodTruckName }</b>`).openPopup();
 
         // Zoom in when clicking on the food truck marker
         foodTruckMarker.on('click', function() {
@@ -59,9 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // AJAX request to send coordinates to the Django view
+     
+    // Get the location button element
     var location_btn = document.getElementById('location-button')
     
+    // Check if the location button exists
     if (location_btn){
         location_btn.addEventListener('click', function() {
             // Check if geolocation is supported by the browser
@@ -71,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 var latitude = position.coords.latitude;
                 var longitude = position.coords.longitude;
     
+                // Redirect to the search by location page
                 window.location.href = '/searchByLoc?latitude=' + latitude + '&longitude=' + longitude;
             });
         } else {
