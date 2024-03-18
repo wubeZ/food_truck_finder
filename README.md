@@ -43,6 +43,7 @@ To run Food Truck Finder locally, follow these steps:
    ```
 5. **Import Data into MongoDB**: Use custom commands to import food truck data from a CSV file into MongoDB.
    ```bash
+   cd food_truck_finder
    python manage.py import_csv
    ```
 6. **Run the Application**: Start the Django development server to run the Food Truck Finder application.
