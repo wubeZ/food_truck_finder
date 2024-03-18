@@ -8,24 +8,50 @@
     <title>{{ tittle }}</title>
     <link href="{% static 'src/styles.css' %}" rel="stylesheet">
     <script href="{% static 'js/map.js' %}"></script>
+    <script href="{% static 'js/search.js' %}"></script>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <!-- Header -->
-    <header class="sticky top-0 w-full h-24 bg-blue-50 flex items-center">
-        <div class="">
-            <h1 class="font-normal text-xl p-4">Food Truck Finder</h1>
+    <header class="z-40 w-full h-24 bg-white pt-4 px-4 sm:px-6 md:px-8 border-b border-slate-200">
+        <div class="w-full flex justify-between items-center">
+            <h1 class="font-semibold text-[#030303] text-lg sm:text-xl md:text-2xl p-4">
+                <a href="{% url 'food_trucks:index' %}">Food Truck Finder</a>
+            </h1>
+            <span class="bg-blue-500 hover:bg-blue-600 px-4 py-2 text-center text-white rounded-md">Explore</span>
         </div>
     </header>
     
+    <div class="">
         {% block content %}
 
         {% endblock %}
+    </div>
+        
     
     <!-- Footer -->
-    <footer class="h-40 w-full bg-black">
-        <h1>Footer here some thing to do!</h1>
+    <footer class="h-40 w-full bg-white border-t border-slate-200 mt-12">
+        <div class="flex justify-between items-center py-8 px-6 md:px-12">
+            <div class="w-full">
+                <h1 class="font-semibold text-[#030303] text-base sm:text-lg md:text-xl">Food Truck Finder</h1>
+                <p class="text-sm text-gray-600 mr-4 pt-4">Find food trucks near you</p>
+            </div>
+
+            <div class="flex flex-col justify-between items-end w-full">
+                <p class="text-sm text-gray-600 mr-4">Support</p>
+                <p class="text-sm text-gray-600 mr-4">Help Center</p>
+                <p class="text-sm text-gray-600 mr-4">Customer</p>
+                <p class="text-sm text-gray-600 mr-4">How it works</p>
+                <p class="text-sm text-gray-600 mr-4">Get in touch</p>
+            </div>
+        </div>
+
+        <div class="flex justify-center items-center h-12 bg-blue-50 text-black">
+            <p class="text-sm">© 2024 Food Truck Finder</p>
+        </div>
+
     </footer>
 
 </body>
@@ -33,4 +59,5 @@
 
 {% block scripts %}
 <script src="{% static 'js/map.js' %}"></script>
+<script src="{% static 'js/search.js' %}"></script>
 {% endblock %}

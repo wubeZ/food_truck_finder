@@ -4,22 +4,24 @@
 
 <section>
     <div class="container">
-        <div class="w-full mb-12">
-            <h2 class="text-3xl">Results</h2>
-            <div class="flex flex-wrap gap-16 justify-center">
+        <div class="w-full m-12">
+            <h2 class="text-3xl pl-4">Search Results</h2>
+            <div class="flex flex-wrap gap-16 justify-center items-center mt-4">
                 {% for food_truck in food_trucks %}
-                <a href="{% url 'food_trucks:details' food_truck.id|stringformat:'s' %}">
-                    <div class="p-2 w-80 h-64 hover:shadow-lg hover:scale-105 bg-slate-50 rounded-sm text-center">
-                        <img src="{{ food_truck.image.url }}" alt="{{ food_truck.name }}" class="w-full h-32 object-cover rounded-lg">
-                            <p class="text-2xl text-slate-700">
+                    <div class="p-2 w-80 hover:shadow-lg hover:scale-105 bg-slate-50 rounded-sm flex flex-col justify-between">
+                        <img src="{% static '/images/food_truck.jpg' %}" alt="{{ food_truck.name }}" class="w-full object-cover rounded-lg">
+                            <p class="text-2xl text-slate-700 pt-4">
                                 {{ food_truck.name }}
                             </p>
-                            <p class="text-sm">
+                            <p class="text-sm p-2">
                                 {{ food_truck.facility_type }}
                             </p>
-    
+
+                            <a href="{% url 'food_trucks:details' food_truck.id|stringformat:'s' %}" class="text-blue-500 hover:text-blue-600 flex justify-end">
+                                <span class="text-sm underline px-4">Detail</span>
+                            </a>
                     </div>
-                </a>     
+                    
                 {% endfor %}
             </div>
         </div>
