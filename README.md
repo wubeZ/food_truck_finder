@@ -52,16 +52,32 @@ To run Food Truck Finder locally, follow these steps:
    ```
 Open your web browser and navigate to http://localhost:8000 to access Food Truck Finder.
 
+
 ## 📸 Screen Shot Preview
 
 - **🏠 Home Page**:
-  ![Home Page](screenshots/home_page.png)
+  <div style="display:flex; justify-content: center;">
+    <img src="https://github.com/wubeZ/food_truck_finder/blob/main/design/homepage1_design.png" alt="Home Page 1" width="400" height="300">
+    <img src="https://github.com/wubeZ/food_truck_finder/blob/main/design/homepage2_design.png" alt="Home Page 2" width="400" height="300">
+  </div>
   
 - **📝 Details Page**:
-  ![Details Page](screenshots/details_page.png)
+  <div style="text-align:center;">
+    <img src="https://github.com/wubeZ/food_truck_finder/blob/main/design/details_design.png" alt="Details Page" width="400" height="300">
+  </div>
   
 - **🔍 Search Result Page**:
-  ![Search Result Page](screenshots/search_result_page.png)
+  <div style="text-align:center;">
+    <img src="https://github.com/wubeZ/food_truck_finder/blob/main/design/search_results_design.png" alt="Search Result Page" width="400" height="300">
+  </div>
+
+- **🚨 Error Page**:
+  <div style="text-align:center;">
+    <img src="https://github.com/wubeZ/food_truck_finder/blob/main/design/error_design.png" alt="Error Page" width="400" height="300">
+  </div>
+
+
+
 
 ## 🛠️ Workflow
 
