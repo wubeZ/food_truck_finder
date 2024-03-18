@@ -58,10 +58,16 @@ def index(request):
 
 
 def search(request):
-    context = {
-        "variable": "value"
-    }
-    return render(request, "search.html", context)
+    context = {}
+    if request.method == 'GET':
+        truck_name = request.GET.get('search')
+
+        food_trucks = FoodTruck.objects(name=truck_name)
+
+        context = {
+            "food_trucks": food_trucks
+        }
+    return render(request, "search_by_location.html", context)
 
 def search_by_location(request):
     context = {}
