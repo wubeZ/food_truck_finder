@@ -1,16 +1,16 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
 <section>
-  <div class="container">
-    <div class="w-full m-8 mb-16">
+  <div class="container mx-auto">
+    <div class="w-full mt-8 mb-16">
       <a
         href="{% url 'food_trucks:index' %}"
-        class="flex w-24 gap-2 ml-4 items-center"
+        class="flex w-24 gap-2 ml-8 sm:ml-12 items-center"
       >
         <span class="fa fa-chevron-left"> </span>
         <span class="text-base text-gray-700">Go Back</span>
       </a>
-      <h2 class="text-3xl text-center">Search Results</h2>
+      <h2 class="text-3xl text-center mt-8">Search Results</h2>
       <div
         class="flex flex-wrap gap-16 justify-center items-center mt-4 cursor-pointer"
       >
@@ -38,8 +38,15 @@
         </div>
 
         {% endfor %} {% else %}
-        <div class="flex flex-col justify-center self-center">
+        <div class="flex flex-col items-center justify-center self-center">
           <h1 class="text-2xl pt-4 text-gray-500">Food Trucks Not Found</h1>
+          <div class="max-w-md">
+            <img
+              src="{% static '/images/error.jpg' %}"
+              alt="Food Trucks Not Found"
+              class="w-fit object-cover rounded-lg"
+            />
+          </div>
         </div>
 
         {% endif %}

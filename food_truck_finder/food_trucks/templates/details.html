@@ -85,8 +85,15 @@
   </div>
 
   {% else %}
-  <div class="flex flex-col justify-center self-center">
+  <div class="flex flex-col items-center justify-center self-center">
     <h1 class="text-2xl text-gray-500">Food Truck Not Found</h1>
+    <div class="max-w-md">
+      <img
+        src="{% static '/images/error.jpg' %}"
+        alt="Food Truck Not Found"
+        class="w-full object-cover rounded-lg"
+      />
+    </div>
   </div>
 
   {% endif %}
