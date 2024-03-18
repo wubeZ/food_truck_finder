@@ -62,8 +62,11 @@ def search(request):
     if request.method == 'GET':
         truck_name = request.GET.get('search')
 
-        food_trucks = FoodTruck.objects(name=truck_name)
-
+        try:
+            food_trucks = FoodTruck.objects(name=truck_name)
+        except:
+            food_trucks = []
+            
         context = {
             "food_trucks": food_trucks
         }
@@ -76,7 +79,10 @@ def search_by_location(request):
         lat = request.GET.get('latitude')
         lng = request.GET.get('longitude')
 
-        food_trucks = nearest_trucks(lat, lng)
+        try:
+            food_trucks = nearest_trucks(lat, lng)
+        except:
+            food_trucks = []
 
         context = {
             "food_trucks" : food_trucks
@@ -85,10 +91,12 @@ def search_by_location(request):
     return render(request, "search_by_location.html", context)
 
 def details(request, id):
-    object_id = ObjectId(id)
-    
-    food_truck = FoodTruck.objects.get(id=object_id)
-    
+    try:
+        object_id = ObjectId(id)
+        food_truck = FoodTruck.objects.get(id=object_id)
+    except:
+        food_truck = None
+
     context = {
         "food_truck" : food_truck
     }
