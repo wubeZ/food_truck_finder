@@ -1,31 +1,51 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
 <section>
-    <div class="container">
-        <div class="w-full m-12">
-            <h2 class="text-3xl pl-4">Search Results</h2>
-            <div class="flex flex-wrap gap-16 justify-center items-center mt-4">
-                {% for food_truck in food_trucks %}
-                    <div class="p-2 w-80 hover:shadow-lg hover:scale-105 bg-slate-50 rounded-sm flex flex-col justify-between">
-                        <img src="{% static '/images/food_truck.jpg' %}" alt="{{ food_truck.name }}" class="w-full object-cover rounded-lg">
-                            <p class="text-2xl text-slate-700 pt-4">
-                                {{ food_truck.name }}
-                            </p>
-                            <p class="text-sm p-2">
-                                {{ food_truck.facility_type }}
-                            </p>
+  <div class="container">
+    <div class="w-full m-8 mb-16">
+      <a
+        href="{% url 'food_trucks:index' %}"
+        class="flex w-24 gap-2 ml-4 items-center"
+      >
+        <span class="fa fa-chevron-left"> </span>
+        <span class="text-base text-gray-700">Go Back</span>
+      </a>
+      <h2 class="text-3xl text-center">Search Results</h2>
+      <div
+        class="flex flex-wrap gap-16 justify-center items-center mt-4 cursor-pointer"
+      >
+        {% if food_trucks %} {% for food_truck in food_trucks %}
+        <div
+          class="p-4 w-80 hover:shadow-sm transition-all duration-75 ease-linear hover:scale-105 bg-slate-50 rounded-xl flex flex-col justify-between"
+        >
+          <img
+            src="{% static '/images/food_truck.jpg' %}"
+            alt="{{ food_truck.name }}"
+            class="w-full object-cover rounded-lg"
+          />
+          <p class="text-2xl text-slate-700 pt-4">{{ food_truck.name }}</p>
+          <p class="text-sm text-gray-500">{{ food_truck.facility_type }}</p>
 
-                            <a href="{% url 'food_trucks:details' food_truck.id|stringformat:'s' %}" class="text-blue-500 hover:text-blue-600 flex justify-end">
-                                <span class="text-sm underline px-4">Detail</span>
-                            </a>
-                    </div>
-                    
-                {% endfor %}
-            </div>
+          <a
+            href="{% url 'food_trucks:details' food_truck.id|stringformat:'s' %}"
+            class="text-white self-end"
+          >
+            <span
+              class="text-xs text-center text-white bg-blue-500 py-2 rounded-lg px-4"
+              >view details</span
+            >
+          </a>
         </div>
+
+        {% endfor %} {% else %}
+        <div class="flex flex-col justify-center self-center">
+          <h1 class="text-2xl pt-4 text-gray-500">Food Trucks Not Found</h1>
+        </div>
+
+        {% endif %}
+      </div>
     </div>
+  </div>
 </section>
 
 {% endblock %}

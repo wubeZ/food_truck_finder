@@ -1,160 +1,276 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-<section class="px-4 md:px-8 lg:px-16">
-    <div class="relative mb-4 shadow-md rounded-lg"> 
-            <img src="{% static 'images/food_truck.jpg' %}" alt="Food Truck" class="w-full h-64 object-cover rounded-lg blur-[2px]">
-            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-center w-full">
-                <h1 class="text-xl sm:text-3xl lg:text-4xl font-bold mb-4">Find the best food trucks in San Francisco</h1>
-                <p class="text-xs sm:text-lg">Explore a variety of cuisines on wheels near you!</p>
-            </div>
+<section class="px-4 md:px-8 lg:px-16 mt-8">
+  <div class="relative mb-4 shadow-md rounded-lg">
+    <img
+      src="{% static 'images/food_truck.jpg' %}"
+      alt="Food Truck"
+      class="w-full h-64 object-cover rounded-lg blur-[2px]"
+    />
+    <div
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center w-full"
+    >
+      <h1 class="text-xl sm:text-3xl text-white lg:text-4xl font-bold mb-4">
+        Find the best food trucks in San Francisco
+      </h1>
+      <p class="text-xs text-white sm:text-lg">
+        Explore a variety of cuisines on wheels near you!
+      </p>
     </div>
-    
-    <h2 class="text-lg sm:text-2xl font-bold mt-8 mb-4">Find Food Trucks Near You</h2>
+  </div>
 
-    <div class="flex flex-col-reverse sm:flex-row justify-center items-center gap-6 sm:gap-2 md:gap-8 mb-8">
-        <button id="location-button" class="bg-blue-500 max-w-96 text-white px-8 py-3 rounded-xl shadow hover:bg-blue-600 text-xs md:text-sm lg:text-base sm:w-2/5 lg:w-1/3">
-            Near My Location
-            <span class="fa fa-location-arrow pl-2 fa-1x"></span>
-        </button>
+  <h2 class="text-lg sm:text-2xl font-bold mt-8 mb-4">
+    Find Food Trucks Near You
+  </h2>
 
-        <div class="flex w-full">
-            <input id="search-input" type="text"
-            placeholder="Search for food trucks by Name"
-            class="w-full p-2 border-2 border-slate-200 text-sm md:text-base lg:text-lg placeholder:text-sm md:placeholder:text-base placeholder:text-gray-400"
-            >
-            <button id="truck-search-button" class="bg-blue-500 text-white px-4 py-2 rounded-r-xl shadow hover:bg-blue-600"> 
-                <span class="fa fa-arrow-right fa-2x"></span>
-            </button>
-        </div>
+  <div
+    class="flex flex-col-reverse sm:flex-row justify-center items-center gap-6 sm:gap-2 md:gap-8 mb-8"
+  >
+    <button
+      id="location-button"
+      class="bg-blue-500 max-w-96 text-white px-8 py-3 rounded-xl shadow hover:bg-blue-600 text-xs md:text-sm lg:text-base sm:w-2/5 lg:w-1/3"
+    >
+      Near My Location
+      <span class="fa fa-map-marker text-white pl-2 fa-1x"></span>
+    </button>
 
+    <div class="flex w-full">
+      <input
+        id="search-input"
+        type="text"
+        placeholder="Search for food trucks by Name"
+        class="w-full rounded-l-lg p-2 border-2 border-slate-200 text-sm md:text-base lg:text-lg placeholder:text-sm md:placeholder:text-base placeholder:text-gray-400"
+      />
+      <button
+        id="truck-search-button"
+        class="bg-blue-500 text-white px-4 py-2 rounded-r-xl shadow hover:bg-blue-600"
+      >
+        <span class="fa fa-search text-white"></span>
+      </button>
     </div>
+  </div>
 
+  <h2 class="text-lg sm:text-2xl font-bold mt-8 mb-4">Popular Food Trucks</h2>
 
-    <h2 class="text-lg sm:text-2xl font-bold mt-8 mb-4">Popular Food Trucks</h2>
-    
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="col-span-1">
-            <img src="{% static 'images/card.svg' %}" alt="Food Truck" class="w-full h-80 rounded-xl object-cover">
-        </div>
-        <div class="col-span-1">
-            <img src="{% static 'images/card.svg' %}" alt="Food Truck" class="w-full h-44 mb-4 rounded-xl object-cover hidden md:block">
-            <img src="{% static 'images/card.svg' %}" alt="Food Truck" class="w-full h-32 rounded-xl object-cover hidden md:block">
-        </div>
-        <div class="col-span-1">
-            <img src="{% static 'images/card.svg' %}" alt="Food Truck" class="w-full h-80 rounded-xl object-cover">
-        </div>
-        <div class="col-span-1">
-            <img src="{% static 'images/card.svg' %}" alt="Food Truck" class="w-full h-32 mb-4 rounded-xl object-cover hidden md:block">
-            <img src="{% static 'images/card.svg' %}" alt="Food Truck" class="w-full h-44 rounded-xl object-cover hidden md:block">
-        </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="col-span-1">
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Food Truck"
+        class="w-full h-80 rounded-xl object-cover"
+      />
     </div>
-
-
-    <h2 class="text-lg sm:text-2xl font-bold mt-8 mb-4">Popular Food Items</h2>
-
-    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
-        <div class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto">
-            <img src="{% static 'images/card.svg' %}" alt="Street Food" class="w-full h-48 rounded-xl object-cover">
-            <div class="absolute top-4 left-4">
-                <p alt="Rating" class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800">9.6</p>
-            </div>
-            <div class="absolute top-4 right-4">
-                <p alt="Rating" class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"></p>
-            </div>
-            <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
-            <p class="pl-2 text-sm text-gray-600">Location</p>
-
-            <div class="flex justify-between">
-                <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
-                <p class="pr-2 text-base text-black mt-2 fa fa-arrow-right">
-                </p>
-            </div>
-        </div>
-        <div class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto">
-            <img src="{% static 'images/card.svg' %}" alt="Street Food" class="w-full h-48 rounded-xl object-cover">
-            <div class="absolute top-4 left-4">
-                <p alt="Rating" class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800">9.6</p>
-            </div>
-            <div class="absolute top-4 right-4">
-                <p alt="Rating" class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"></p>
-            </div>
-            <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
-            <p class="pl-2 text-sm text-gray-600">Location</p>
-
-            <div class="flex justify-between">
-                <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
-                <p class="pr-2 text-base text-black mt-2 fa fa-arrow-right">
-                </p>
-            </div>
-        </div>
-        <div class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto">
-            <img src="{% static 'images/card.svg' %}" alt="Street Food" class="w-full h-48 rounded-xl object-cover">
-            <div class="absolute top-4 left-4">
-                <p alt="Rating" class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800">9.6</p>
-            </div>
-            <div class="absolute top-4 right-4">
-                <p alt="Rating" class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"></p>
-            </div>
-            <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
-            <p class="pl-2 text-sm text-gray-600">Location</p>
-
-            <div class="flex justify-between">
-                <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
-                <p class="pr-2 text-base text-black mt-2 fa fa-arrow-right">
-                </p>
-            </div>
-        </div>
-        <div class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto">
-            <img src="{% static 'images/card.svg' %}" alt="Street Food" class="w-full h-48 rounded-xl object-cover">
-            <div class="absolute top-4 left-4">
-                <p alt="Rating" class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800">9.6</p>
-            </div>
-            <div class="absolute top-4 right-4">
-                <p alt="Rating" class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"></p>
-            </div>
-            <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
-            <p class="pl-2 text-sm text-gray-600">Location</p>
-
-            <div class="flex justify-between">
-                <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
-                <p class="pr-2 text-base text-black mt-2 fa fa-arrow-right">
-                </p>
-            </div>
-        </div>
-        <div class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto">
-            <img src="{% static 'images/card.svg' %}" alt="Street Food" class="w-full h-48 rounded-xl object-cover">
-            <div class="absolute top-4 left-4">
-                <p alt="Rating" class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800">9.6</p>
-            </div>
-            <div class="absolute top-4 right-4">
-                <p alt="Rating" class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"></p>
-            </div>
-            <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
-            <p class="pl-2 text-sm text-gray-600">Location</p>
-
-            <div class="flex justify-between">
-                <p class="pl-2 text-base font-semibold text-black mt-2">from $10</p>
-                <p class="pr-2 text-base text-black mt-2 fa fa-arrow-right">
-                </p>
-            </div>
-        </div>
+    <div class="col-span-1">
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Food Truck"
+        class="w-full h-44 mb-4 rounded-xl object-cover hidden md:block"
+      />
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Food Truck"
+        class="w-full h-32 rounded-xl object-cover hidden md:block"
+      />
     </div>
-    
-
-    <!-- Subscribe Now -->
-    <div class="flex flex-col lg:flex-row gap-8 md:gap-4 lg:gap-0 justify-between items-center bg-[#f0f0f0] px-8 py-7 rounded-xl mt-16">
-        <div class="flex justify-center">
-            <p alt="Advert" class="w-16 h-16 text-3xl fa fa-flag fa-4x rounded-lg object-cover"></p>
-            <div class="ml-4">
-                <h3 class="text-lg font-semibold">Get the best food truck deals</h3>
-                <p class="text-sm text-gray-600">Subscribe to our newsletter and get the latest food truck deals in San Francisco</p>
-            </div>
-        </div>
-        <button class="bg-blue-500 text-white px-14 text-sm py-2 rounded-xl shadow hover:bg-blue-600">Subscribe now</button>
+    <div class="col-span-1">
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Food Truck"
+        class="w-full h-80 rounded-xl object-cover"
+      />
     </div>
+    <div class="col-span-1">
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Food Truck"
+        class="w-full h-32 mb-4 rounded-xl object-cover hidden md:block"
+      />
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Food Truck"
+        class="w-full h-44 rounded-xl object-cover hidden md:block"
+      />
+    </div>
+  </div>
 
+  <h2 class="text-lg sm:text-2xl font-bold mt-8 mb-4">Popular Food Items</h2>
+
+  <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 w-full">
+    <div
+      class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto"
+    >
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Street Food"
+        class="w-full h-48 rounded-xl object-cover"
+      />
+      <div class="absolute top-4 left-4">
+        <p
+          alt="Rating"
+          class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800"
+        >
+          9.6
+        </p>
+      </div>
+      <div class="absolute top-4 right-4">
+        <p
+          alt="Rating"
+          class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"
+        ></p>
+      </div>
+      <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
+      <p class="pl-2 text-sm text-gray-600">Location</p>
+
+      <div class="flex justify-between">
+        <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
+        <p class="pr-2 text-base text-black mt-2 fa fa-chevron-right"></p>
+      </div>
+    </div>
+    <div
+      class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto"
+    >
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Street Food"
+        class="w-full h-48 rounded-xl object-cover"
+      />
+      <div class="absolute top-4 left-4">
+        <p
+          alt="Rating"
+          class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800"
+        >
+          9.6
+        </p>
+      </div>
+      <div class="absolute top-4 right-4">
+        <p
+          alt="Rating"
+          class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"
+        ></p>
+      </div>
+      <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
+      <p class="pl-2 text-sm text-gray-600">Location</p>
+
+      <div class="flex justify-between">
+        <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
+        <p class="pr-2 text-base text-black mt-2 fa fa-chevron-right"></p>
+      </div>
+    </div>
+    <div
+      class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto"
+    >
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Street Food"
+        class="w-full h-48 rounded-xl object-cover"
+      />
+      <div class="absolute top-4 left-4">
+        <p
+          alt="Rating"
+          class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800"
+        >
+          9.6
+        </p>
+      </div>
+      <div class="absolute top-4 right-4">
+        <p
+          alt="Rating"
+          class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"
+        ></p>
+      </div>
+      <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
+      <p class="pl-2 text-sm text-gray-600">Location</p>
+
+      <div class="flex justify-between">
+        <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
+        <p class="pr-2 text-base text-black mt-2 fa fa-chevron-right"></p>
+      </div>
+    </div>
+    <div
+      class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto"
+    >
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Street Food"
+        class="w-full h-48 rounded-xl object-cover"
+      />
+      <div class="absolute top-4 left-4">
+        <p
+          alt="Rating"
+          class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800"
+        >
+          9.6
+        </p>
+      </div>
+      <div class="absolute top-4 right-4">
+        <p
+          alt="Rating"
+          class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"
+        ></p>
+      </div>
+      <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
+      <p class="pl-2 text-sm text-gray-600">Location</p>
+
+      <div class="flex justify-between">
+        <p class="pl-2 text-base text-black font-semibold mt-2">from $10</p>
+        <p class="pr-2 text-base text-black mt-2 fa fa-chevron-right"></p>
+      </div>
+    </div>
+    <div
+      class="relative col-span-1 p-2 rounded-2xl max-w-80 h-full bg-[#f0f0f0] mx-auto"
+    >
+      <img
+        src="{% static 'images/card.svg' %}"
+        alt="Street Food"
+        class="w-full h-48 rounded-xl object-cover"
+      />
+      <div class="absolute top-4 left-4">
+        <p
+          alt="Rating"
+          class="w-10 font-light h-6 py-1 text-center text-white rounded-2xl text-xs bg-slate-800"
+        >
+          9.6
+        </p>
+      </div>
+      <div class="absolute top-4 right-4">
+        <p
+          alt="Rating"
+          class="w-6 h-6 py-1 text-center fa fa-star text-white rounded-full bg-black"
+        ></p>
+      </div>
+      <h3 class="pl-2 text-base font-medium mt-2">Ice Cream</h3>
+      <p class="pl-2 text-sm text-gray-600">Location</p>
+
+      <div class="flex justify-between">
+        <p class="pl-2 text-base font-semibold text-black mt-2">from $10</p>
+        <p class="pr-2 text-base text-black mt-2 fa fa-chevron-right"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Subscribe Now -->
+  <div
+    class="flex flex-col lg:flex-row gap-8 md:gap-4 lg:gap-0 justify-between items-center bg-[#f0f0f0] px-8 py-7 rounded-xl mt-16"
+  >
+    <div class="flex justify-center">
+      <p
+        alt="Advert"
+        class="w-16 h-16 text-3xl fa fa-flag fa-4x rounded-lg object-cover"
+      ></p>
+      <div class="ml-4">
+        <h3 class="text-lg font-semibold">Get the best food truck deals</h3>
+        <p class="text-sm text-gray-600">
+          Subscribe to our newsletter and get the latest food truck deals in San
+          Francisco
+        </p>
+      </div>
+    </div>
+    <button
+      class="bg-blue-500 text-white px-14 text-sm py-2 rounded-xl shadow hover:bg-blue-600"
+    >
+      Subscribe now
+    </button>
+  </div>
 </section>
 
 {% endblock %}

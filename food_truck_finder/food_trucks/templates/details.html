@@ -1,60 +1,95 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% block content %}
 
-{% block content %}
+<section class="p-4 m-8 flex flex-col gap-8">
+  <a href="{% url 'food_trucks:index' %}" class="flex w-24 gap-2 items-center">
+    <span class="fa fa-chevron-left"> </span>
+    <span class="text-base text-gray-700">Go Back</span>
+  </a>
 
-<section class="flex flex-col lg:flex-row justify-between gap-8 p-4 m-12">
-    <div class="max-w-md lg:w-1/3 shadow-xl p-4 rounded-xl flex flex-col justify-around bg-cyan-50">
-        {% if food_truck %}
-            <div class=" flex flex-col justify-between gap-2">
-                <h1 class="text-2xl font-bold pb-4">{{ food_truck.name }}</h1>
-                <p class="text-base text-gray-600 font-semibold  flex gap-8 text-center items-center"> Type <span class="text-sm font-normal text-center">{{ food_truck.facility_type}}</span></p>
-                <p class="text-base text-gray-600 font-semibold  flex gap-8 text-center items-center"> Location <span class="text-sm font-normal text-center">{{ food_truck.location_description}}</span></p>
-                <p class="text-base text-gray-600 font-semibold  flex gap-8 text-center items-center"> Address <span class="text-sm font-normal text-center">{{ food_truck.address}}</span></p>
-                <p class="text-base text-gray-600 font-semibold  flex gap-8 text-center items-center"> Permit <span class="text-sm font-normal text-center">{{ food_truck.permit}}</span></p>
-                
-            </div>
-            {% if food_truck.food_items %}
-                <div>
-                    <h2 class="text-lg font-semibold mb-2 mt-4">Food Items</h2>
-                    <ul class="ml-4 flex gap-4">
-                        {% for food_item in food_truck.food_items %}
-                            <li class="text-base text-gray-600">{{ food_item }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endif %}
-      
-            {% if food_truck.open_hours %}
-            <div>
-                <h2 class="text-lg font-semibold mt-8 mb-2">Open Hours</h2>
-                {% for day, hours in food_truck.open_hours.items %}
-                <div class="flex gap-4">
-                    <p class="text-base mb-1 font-semibold text-black bg-cyan-300 px-4 py-1 rounded-lg ">{{ day }}</p>
-                    <ul class="flex flex-wrap gap-4">
-                        {% for hour in hours %}
-                            <li class="text-sm font-medium text-center py-1">{{ hour.start_time }} - {{ hour.end_time }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-                {% endfor %}
-            {% endif %}
+  {% if food_truck %}
+  <div class="flex flex-col lg:flex-row justify-between gap-8">
+    <div
+      class="max-w-md lg:w-1/3 shadow-md p-8 rounded-xl flex flex-col justify-around bg-cyan-50"
+    >
+      <div class="flex flex-col justify-between gap-2">
+        <h1 class="text-2xl font-bold pb-2">{{ food_truck.name }}</h1>
+        <p
+          class="text-base text-gray-600 font-semibold flex items-center gap-4"
+        >
+          Type:
+          <span class="text-sm font-normal">{{ food_truck.facility_type}}</span>
+        </p>
+        <p class="text-base text-gray-600 font-semibold flex items-start gap-4">
+          Location:
+          <span class="text-sm font-normal"
+            >{{ food_truck.location_description}}</span
+          >
+        </p>
+        <p
+          class="text-base text-gray-600 font-semibold flex items-center gap-4"
+        >
+          Address:
+          <span class="text-sm font-normal">{{ food_truck.address}}</span>
+        </p>
+        <p
+          class="text-base text-gray-600 font-semibold flex items-center gap-4"
+        >
+          Permit:
+          <span class="text-sm font-normal text-center"
+            >{{ food_truck.permit}}</span
+          >
+        </p>
+      </div>
+      {% if food_truck.food_items %}
+      <div class="">
+        <h2 class="text-lg font-semibold my-4">Food Items</h2>
+        <ul class="flex flex-wrap gap-4">
+          {% for food_item in food_truck.food_items %}
+          <li class="text-sm rounded-lg text-gray-600 bg-slate-300 px-4 py-2">
+            {{ food_item }}
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% endif %} {% if food_truck.open_hours %}
+      <div>
+        <h2 class="text-lg font-semibold mt-8 mb-2">Open Hours</h2>
+        {% for day, hours in food_truck.open_hours.items %}
+        <div class="flex gap-4">
+          <p
+            class="text-base mb-1 font-semibold text-black bg-cyan-300 px-4 py-1 rounded-lg"
+          >
+            {{ day }}
+          </p>
+          <ul class="flex flex-wrap gap-4">
+            {% for hour in hours %}
+            <li class="text-sm font-medium text-center py-1">
+              {{ hour.start_time }} - {{ hour.end_time }}
+            </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endfor %} {% endif %}
     </div>
-        <div id="map" class="lg:w-2/3 h-[300px] md:h-[600px]"></div>       
-    </div>
+    <div id="map" class="lg:w-2/3 h-[300px] md:h-[600px] rounded-lg"></div>
 
     <!-- Pass data to JavaScript -->
-    <div id="food-truck-data"
-        data-name="{{ food_truck.name }}"
-        data-loc-description="{{ food_truck.facility_type }}"
-        data-lat="{{ food_truck.location.coordinates.1 }}"
-        data-lng="{{ food_truck.location.coordinates.0 }}">
-    </div>
+    <div
+      id="food-truck-data"
+      data-name="{{ food_truck.name }}"
+      data-loc-description="{{ food_truck.facility_type }}"
+      data-lat="{{ food_truck.location.coordinates.1 }}"
+      data-lng="{{ food_truck.location.coordinates.0 }}"
+    ></div>
+  </div>
 
-    {% else %}
-    <h1>Food Truck Not Found</h1>
-    {% endif %}
+  {% else %}
+  <div class="flex flex-col justify-center self-center">
+    <h1 class="text-2xl text-gray-500">Food Truck Not Found</h1>
+  </div>
+
+  {% endif %}
 </section>
 
 {% endblock %}
