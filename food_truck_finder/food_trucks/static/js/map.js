@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ];
 
         var truckIcon = L.icon({
-            iconUrl: "https://raw.githubusercontent.com/wubeZ/food_truck_finder/main/food_truck_finder/food_trucks/static/images/taco-truck.png?token=GHSAT0AAAAAACASNZN5KYSBPSHU7LYEZ472ZPYTMAA",
+            iconUrl: "https://res.cloudinary.com/dshfsksnw/image/upload/v1710792824/taco-truck_acdw3t.png",
             iconSize: [30, 35], // size of the icon
             popupAnchor: [-3, -14] // point from which the popup should open relative to the iconAnchor
         });
