@@ -41,12 +41,13 @@ To run Food Truck Finder locally, follow these steps:
    ```bash
    pip install -r requirements.txt
    ```
-5. **Import Data into MongoDB**: Use custom commands to import food truck data from a CSV file into MongoDB.
+5. **Set Up MongoDB Atlas**: Create a MongoDB Atlas account and obtain the MongoDB URI. Replace the placeholder values in the `.env.example` file with your actual MongoDB URI and any other required environment variables. Rename the file to `.env`.
+6. **Import Data into MongoDB**: Use custom commands to import food truck data from a CSV file into MongoDB.
    ```bash
    cd food_truck_finder
    python manage.py import_csv
    ```
-6. **Run the Application**: Start the Django development server to run the Food Truck Finder application.
+7. **Run the Application**: Start the Django development server to run the Food Truck Finder application.
    ```bash
    python manage.py runserver
    ```
@@ -93,6 +94,7 @@ Open your web browser and navigate to http://localhost:8000 to access Food Truck
 - **🔧 GitHub Action Workflow**: Address issues related to setting up GitHub Action workflows, particularly regarding database connectivity with MongoDB Atlas.
 - 🐳 **Containerization with Docker**: Containerize the project using Docker to ensure consistency in development and deployment environments.
 - 🚀 **Deployment on Hosting Service**: Consider deploying the containerized application on a hosting service for improved scalability and availability.
+- 🗺️ **Consider using [OSRM (Open Source Routing Machine)](https://project-osrm.org/)**: Unlike the Haversine formula, which calculates distances based on spherical geometry, OSRM takes into account real-world road networks, traffic conditions, and other factors to provide precise routing and distance calculations.
 
 
 ## 📧 Contact
