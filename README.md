@@ -91,6 +91,9 @@ Open your web browser and navigate to http://localhost:8000 to access Food Truck
 ## 🚀 Things to Improve
 
 - **🔧 GitHub Action Workflow**: Address issues related to setting up GitHub Action workflows, particularly regarding database connectivity with MongoDB Atlas.
+- 🐳 **Containerization with Docker**: Containerize the project using Docker to ensure consistency in development and deployment environments.
+- 🚀 **Deployment on Hosting Service**: Consider deploying the containerized application on a hosting service for improved scalability and availability.
+
 
 ## 📧 Contact
 
