@@ -87,7 +87,7 @@ Open your web browser and navigate to http://localhost:8000 to access Food Truck
 3. **🛠️ Custom Commands**: Develop a custom command to import data from the CSV file into MongoDB collection.
 4. **🖥️ Views and URLs**: Implement view logic and define URL patterns to handle user requests and responses.
 5. **✅ Unit Testing with Pytest**: Write comprehensive unit tests using Pytest to ensure code functionality and reliability.
-6. **🎨 UI/UX Refinement**: Continuously refine the user interface and user experience to optimize usability and engagement.
+6. **🎨 UI/UX Refinement**: Continuously refine the user interface and user experience to optimize usability, engagement, and responsiveness across various devices and screen sizes.
 
 ## 🚀 Things to Improve
 
