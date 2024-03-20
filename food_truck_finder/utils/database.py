@@ -21,7 +21,7 @@ def connect_to_mongodb_atlas(mongo_url):
 
 def get_database():
     
-    mongo_url = os.getenv("MONGO_URL", "localhost:/2710")
+    mongo_url = os.getenv("MONGO_URL")
     
     # Connect to MongoDB Atlas and return the database connection instance
     return connect_to_mongodb_atlas(mongo_url)
