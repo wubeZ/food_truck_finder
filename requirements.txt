@@ -11,5 +11,6 @@ pluggy==1.4.0
 pymongo==4.6.2
 pytest==8.1.1
 pytest-django==4.8.0
+pytest-mock==3.12.0
 python-dotenv==1.0.1
 sqlparse==0.4.4
