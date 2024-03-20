@@ -4,6 +4,7 @@ Django==5.0.3
 django-mongodb-engine==0.6.0
 djangotoolbox==1.8.0
 dnspython==2.6.1
+gunicorn==21.2.0
 iniconfig==2.0.0
 mongoengine==0.28.2
 packaging==24.0
