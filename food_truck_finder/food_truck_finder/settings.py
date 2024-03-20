@@ -7,6 +7,8 @@ load_dotenv()
 
 get_database()
 
+MONGO_URL = os.getenv("MONGO_URL")
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
