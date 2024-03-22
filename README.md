@@ -3,6 +3,9 @@
 ## 🌟 Introduction
 Welcome to Food Truck Finder! Our platform is designed to help you discover the best street food options, particularly food trucks, in San Francisco. Whether you're a local foodie or a visitor exploring the city, Food Truck Finder has got you covered.
 
+For a detailed walkthrough of this project, check out my Medium post: [Exploring San Francisco’s Street Food Scene with Food Truck Finder](https://medium.com/@wubshet/exploring-san-franciscos-street-food-scene-with-food-truck-finder-2c2a6c05f954).
+
+
 ## 🎯 Problem Statement
 San Francisco boasts a vibrant street food scene with numerous food trucks offering a variety of delicious cuisines. However, finding these hidden gems can be challenging, especially for newcomers or those unfamiliar with the city's layout. Food Truck Finder aims to solve this problem by providing a convenient way to locate and explore food trucks across San Francisco.
 
